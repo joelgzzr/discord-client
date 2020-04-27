@@ -51,7 +51,7 @@ export const signIn = values => async dispatch => {
         payload: null
     })
 
-    return Router.push('/home?login=true');
+    return window.location.replace('/home?login=true');
 }
 
 export const meServer = (cookie) => async dispatch => {
