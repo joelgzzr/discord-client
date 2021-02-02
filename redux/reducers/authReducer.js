@@ -12,7 +12,7 @@ const initialState = {
     signInErrors: null
 }
 
-export default function(state = initialState, action) {
+export default function authReducer(state = initialState, action) {
     const reducer = {
         [SET_CURRENT_USER]: {
             ...state,

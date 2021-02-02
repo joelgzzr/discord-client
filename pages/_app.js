@@ -1,10 +1,6 @@
 import App from 'next/app';
-import { Provider } from 'react-redux';
-import withRedux from 'next-redux-wrapper';
+import wrapper from '../redux/store';
 import { ThemeProvider } from 'styled-components';
-
-import store from '../redux/store';
-
 import Page from '../components/layout/Page';
 
 const theme = {
@@ -44,13 +40,11 @@ class MyApp extends App {
         const { store } = this.props;
 
         return (
-            <Provider store={store}>
-                <ThemeProvider theme={theme}>
-                    { this.renderComponent() }
-                </ThemeProvider>
-            </Provider>
+            <ThemeProvider theme={theme}>
+                { this.renderComponent() }
+            </ThemeProvider>
         )
     }
 }
 
-export default withRedux(store)(MyApp);
+export default wrapper.withRedux(MyApp);
