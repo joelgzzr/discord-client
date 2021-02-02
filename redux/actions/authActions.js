@@ -1,6 +1,5 @@
 import axios from 'axios';
 import to from 'await-to-js';
-import Router from 'next/router';
 
 import { UNSET_CURRENT_USER, SET_CURRENT_USER, SIGNUP_ERRORS, SIGNIN_ERRORS } from '../types';
 
@@ -26,7 +25,7 @@ export const signUp = values => async dispatch => {
         payload: null
     })
 
-    return Router.push('/profile?register=true');
+    return window.location.replace('/profile?register=true');
 }
 
 export const signIn = values => async dispatch => {

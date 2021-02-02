@@ -1,73 +1,19 @@
-import styled from 'styled-components';
 import { useFormik } from 'formik';
 import { useDispatch } from 'react-redux';
 import * as Yup from 'yup';
 
 import { signIn } from '../../redux/actions/authActions';
-
-const CustomContainer = styled.div`
-  display: flex;
-  width: ${props => props.width};
-`;
-
-const FormContainer = styled.div`
-  display: flex;
-  flex-grow: 1;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border-radius: 10px;
-  background-color: #36393f;
-  color: white;
-  padding: 10px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-`;
-
-const FormFlex = styled.form`
-  display: flex;
-  flex-grow: ${props => props.flexGrow};
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
-
-const CustomFlex = styled.div`
-  display: flex;
-  flex-grow: ${props => props.flexGrow};
-  flex-direction: ${props => props.flexDirection};
-  margin: ${props => props.margin};
-  width: ${props => props.width};
-`;
-
-const CustomInputField = styled.input`
-  border: 1px solid black;
-  padding: 5px 5px;
-`;
-
-const CustomLabel = styled.label`
-  flex-grow: ${props => props.flexGrow};
-  color: white;
-  font-size: 12px;
-`;
-
-const CustomError = styled.div`
-  color: #e44546;
-  flex-grow: ${props => props.flexGrow};
-`;
-
-const CustomButton = styled.button`
-  background-color: #7289da;
-  border: none;
-  cursor: pointer;
-  height: 27px;
-  width: 100%;
-  color: white;
-
-  &:hover {
-    background-color: white;
-    color: #7289da;
-  }
-`;
+import { 
+  CustomContainer, 
+  FormContainer, 
+  CustomFlex,
+  FormFlex,
+  CustomLabel,
+  CustomInputField,
+  CustomError,
+  CustomButton,
+  CustomAnchor 
+} from '../styles/CommonStyles';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email').required('Email is required'),
@@ -121,8 +67,11 @@ const LogInForm = () => {
               { errors.password && touched.password &&
                   <CustomError> { errors.password } </CustomError> }
           </CustomFlex>
-          <CustomFlex margin="8px 0px 10px 0px" width="100%">
+          <CustomFlex margin="8px 0px 10px 0px" width="181px">
             <CustomButton type="submit">Login</CustomButton>
+          </CustomFlex>
+          <CustomFlex margin="8px 0px 10px 0px" width="100%">
+            Don't have an account? &nbsp; <CustomAnchor href='/register'>Register</CustomAnchor>
           </CustomFlex>
         </FormFlex>
       </FormContainer>
